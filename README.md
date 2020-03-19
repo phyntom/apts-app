@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -66,3 +67,12 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+=======
+# apts-app
+React Appointment App
+++++++++++++++++++++++
+
+This app is created to demonstrate the UI component concept which is being used in react
+It is also created in order to demonstrate how React simplify the creation of custom reusable
+component
+>>>>>>> 9c5a55626ba66b3bed872401e06d3e73d8d8dd69
