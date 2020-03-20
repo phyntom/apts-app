@@ -2,9 +2,42 @@ import React, { Component } from 'react';
 import { FaPlus } from 'react-icons/fa';
 
 class AddAppointments extends Component {
+  state = {
+    petName: '',
+    ownerName: '',
+    aptNotes: '',
+    aptDate: '',
+    aptTime: ''
+  };
 
-  state={
-    
+  constructor() {
+    super();
+    this.handleAdd = this.handleAdd.bind(this);
+  }
+
+  handleChange = e => {
+    const value = e.target.value;
+    const name = e.target.name;
+    this.setState(prevState => (prevState[name] = value));
+  };
+
+  handleAdd(e) {
+    e.preventDefault();
+    let tempApt = {
+      petName: this.state.petName,
+      ownerName: this.state.ownerName,
+      aptDate: this.state.aptDate + ' ' + this.state.aptTime,
+      aptNotes: this.state.aptNotes
+    };
+    this.props.onAddAppointment(tempApt);
+    this.setState({
+      petName: '',
+      ownerName: '',
+      aptNotes: '',
+      aptDate: '',
+      aptTime: ''
+    });
+    this.props.onToggleForm();
   }
 
   render() {
@@ -35,6 +68,8 @@ class AddAppointments extends Component {
                   className='form-control'
                   name='petName'
                   placeholder="Pet's Name"
+                  value={this.state.petName}
+                  onChange={this.handleChange}
                 />
               </div>
             </div>
@@ -52,6 +87,8 @@ class AddAppointments extends Component {
                   className='form-control'
                   name='ownerName'
                   placeholder="Owner's Name"
+                  value={this.state.ownerName}
+                  onChange={this.handleChange}
                 />
               </div>
             </div>
@@ -69,6 +106,8 @@ class AddAppointments extends Component {
                   className='form-control'
                   name='aptDate'
                   id='aptDate'
+                  value={this.state.aptDate}
+                  onChange={this.handleChange}
                 />
               </div>
               <label
@@ -83,6 +122,8 @@ class AddAppointments extends Component {
                   className='form-control'
                   name='aptTime'
                   id='aptTime'
+                  value={this.state.aptTime}
+                  onChange={this.handleChange}
                 />
               </div>
             </div>
@@ -99,6 +140,8 @@ class AddAppointments extends Component {
                   name='aptNotes'
                   id='aptNotes'
                   placeholder='Appointment Notes'
+                  value={this.state.aptNotes}
+                  onChange={this.handleChange}
                 />
               </div>
             </div>

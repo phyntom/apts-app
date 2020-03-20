@@ -25,6 +25,12 @@ class App extends Component {
     this.setState({ appointments: remainingApts });
   };
 
+  addAppointment = item => {
+    this.setState(prevState => {
+      let newAppointments = prevState.appointments.unshift(item);
+      return newAppointments;
+    });
+  };
   // onDelete = item => {
   //   console.log(this.state.appointments.length);
   //   let remainingApts = this.state.appointments.filter(
@@ -48,6 +54,7 @@ class App extends Component {
                 <AddAppointments
                   onToggleForm={this.toggleForm}
                   formDisplay={this.state.formDisplay}
+                  onAddAppointment={this.addAppointment}
                 />
                 <SearchAppointment />
                 <ListAppointment
