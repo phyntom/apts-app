@@ -7,7 +7,8 @@ import { without } from 'lodash';
 
 class App extends Component {
   state = {
-    appointments: []
+    appointments: [],
+    formDisplay: false
   };
 
   componentDidMount() {
@@ -33,6 +34,10 @@ class App extends Component {
   //   console.log(remainingApts.length);
   // };
 
+  toggleForm = () => {
+    this.setState({ formDisplay: !this.state.formDisplay });
+  };
+
   render() {
     return (
       <main className='page bg-white' id='petratings'>
@@ -40,7 +45,10 @@ class App extends Component {
           <div className='row'>
             <div className='col-md-12 bg-white'>
               <div className='container'>
-                <AddAppointments />
+                <AddAppointments
+                  onToggleForm={this.toggleForm}
+                  formDisplay={this.state.formDisplay}
+                />
                 <SearchAppointment />
                 <ListAppointment
                   data={this.state.appointments}
